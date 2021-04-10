@@ -5,6 +5,7 @@
 __pycache__
 db.sqlite3
 media
+cluster/cluster/secret.py
 
 # Backup files # 
 *.bak 
