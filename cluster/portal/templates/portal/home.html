@@ -1,0 +1,61 @@
+{% extends "portal/base.html" %}
+{% block content %}
+
+<div class="m-3">
+  <h2 class="title is-3">Submit Job</h2>
+  <form action="/new" method="post" enctype="multipart/form-data">
+    <div class="pb-1">
+      <div class="form-group col-md-3">
+        <label for="jobName">Job Name</label>
+        <input type="text" class="form-control" id="jobName" placeholder="Job Name">
+      </div>
+    </div>
+    <div class="pb-1">
+      <div class="form-group col-md-3">
+        <label for="fileName">Stdin File Name</label>
+        <input type="password" class="form-control" id="fileName" placeholder="Stdin File Name">
+      </div>
+    </div>
+    <div class="pb-3">
+      <div class="form-group col-md-3">
+        <label for="numProc">Number of Processors</label>
+        <input class="form-control" id="numProc" type="number" aria-describedby="numProcHelp" required min=1 max=64 value=32 />
+      </div>
+    </div>
+    <div class="input-group mb-6">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile01">
+      </div>
+    </div>
+    <div class="m-3">
+      <button type="submitJob" class="btn btn-primary">Submit Job</button>
+    </div>
+  </form>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Job Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Download</th>
+    </tr>
+  </thead>
+  {% if jobs %}
+    {% for job in jobs %}
+      <tbody>
+        <tr>
+          {% if job.queue %}
+            <th scope="row">job.queue</th>
+          {% endif %}
+          <td>job.id</td>
+          <td>job.status</td>
+          <td><a class="link" href="#">Download</a></td>
+        </tr>
+      </tbody>
+    {% endfor %}
+  {% endif %}
+</table>
+
+{% endblock content %}

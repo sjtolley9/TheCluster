@@ -1,0 +1,45 @@
+{% extends "portal/base.html" %}
+{% block content %}
+
+<div class="m-3">
+  <form>
+    <div class="pb-1">
+      <div class="form-group col-md-3">
+        <label for="regEmail">Email</label>
+        <input type="email" class="form-control" id="regEmail" placeholder="Enter email">
+      </div>
+    </div>
+    <div class="pb-1">
+      <div class="form-group col-md-3">
+        <label for="regDisplayName">Display Name</label>
+        <input type="text" class="form-control" id="regDisplayName" placeholder="Display Name">
+      </div>
+    </div>
+    <div class="pb-1">
+      <div class="form-group col-md-3">
+        <label for="regClassID">Class ID</label>
+        <input type="password" class="form-control" id="regClassID" placeholder="Class ID">
+      </div>
+    </div>
+    <div class="pb-1">
+      <div class="form-group col-md-3">
+        <label for="regPassword">Password</label>
+        <input type="password" class="form-control" id="regPassword" placeholder="Password">
+      </div>
+    </div>
+    <div class="pb-3">
+      <div class="form-group col-md-3">
+        <label for="regPasswordConf"> Confirm Password</label>
+        <input type="password" class="form-control" id="regPasswordConf" placeholder="Confirm Password">
+      </div>
+    </div>
+    
+    <button type="register" class="btn btn-primary">Register</button>
+  </form>
+  <div class="pt-2">
+    <a class="link" href="#">Login</a>
+  </div>
+  
+</div>
+
+{% endblock content %}
