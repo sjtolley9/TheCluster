@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rock Slide</title>
+	</head>
+	<body>
+		<form method="post" action="/login/">
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" value="Log In">
+		</form>
+	</body>
+</html>
