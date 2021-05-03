@@ -3,16 +3,17 @@
 
 <div class="m-3">
     <form method="post" action="/login/">
+	{% csrf_token %}
         <div class="pb-1">
             <div class="form-group col-md-3">
-                <label for="logEmail">Email</label>
-                <input type="email" class="form-control" id="logEmail" placeholder="Enter email">
+                <label for="logEmail">Username</label>
+                <input type="text" class="form-control" id="logEmail" placeholder="Username" name="username">
           </div>
         </div>
         <div class="pb-3">
             <div class="form-group col-md-3">
               <label for="logPassword">Password</label>
-              <input type="password" class="form-control" id="logPassword" placeholder="Password">
+              <input type="password" class="form-control" id="logPassword" placeholder="Password" name="password">
             </div>
         </div>
         

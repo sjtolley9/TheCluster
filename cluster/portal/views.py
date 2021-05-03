@@ -16,7 +16,7 @@ def login_view(request):
     else:
         form = LoginForm()
 
-    return render(request, 'portal/login.html', {'form': form})
+    return render(request, 'portal/login1.html', {'form': form})
 
 def auth_view(request):
     username = request.POST['username']
@@ -41,17 +41,15 @@ def create_job(request):
         print(request.FILES)
         if form.is_valid():
             form.save()
+        return HttpResponseRedirect('/new/')
     else:
         form = UploadJobForm()
 
-    return render(request, 'portal/upload.html', {'form': form})
+    return render(request, 'portal/home.html', {'form': form})
 
 # Create your views here.
 def index(request):
-    if not request.user.is_authenticated:
-        return HttpResponse("Welcome to the Rockslide Portal")
-    else:
-        return HttpResponse(f"Welcome to the Rockslide Portal, {request.user.username}")
+    return render(request, 'portal/index.html', {'user': request.user})
 
 def top(request):
     return redirect('/portal/')
