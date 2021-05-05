@@ -27,7 +27,7 @@ SECRET_KEY = cluster.secret.key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '144.39.225.10']
 
 
 # Application definition
