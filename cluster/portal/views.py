@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .models import UploadJobForm
-from .forms import LoginForm
+from .forms import LoginForm, SignUpForm
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -53,3 +53,18 @@ def index(request):
 
 def top(request):
     return redirect('/portal/')
+
+#Register User
+def register_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password = raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+    else:
+        form = SignUpForm()
+    return render(request, 'portal/register.html', {'form': form})
