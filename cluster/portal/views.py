@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .models import UploadJobForm
+from .models import UploadJobForm, Course
 from .forms import LoginForm, SignUpForm
 
 def login_view(request):
@@ -58,6 +58,9 @@ def top(request):
 def register_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
+        if len(Course.objects.filter(course_name=request.POST["course_name"], course_secret=request.POST["course_secret"])) == 0:
+            form.errors["course_name"] = ["No course with provided name and secret."]
+            form.is_valid = lambda:False
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
